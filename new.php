@@ -128,7 +128,7 @@
               <div class="col-sm-10">
                 <select class="form-control" name="gender">
                   <option value="0">性別を選択</option>
-                  <option value="1">男性</option>
+                  <option value="1" selected >男性</option>
                   <option value="2">女性</option>
                 </select>
               </div>
