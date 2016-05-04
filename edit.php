@@ -148,15 +148,17 @@ $dsn='mysql:dbname=myfriends;host=localhost:8080';//本来はIPアドレスを�
               <label class="col-sm-2 control-label">性別</label>
               <div class="col-sm-10">
                 <select class="form-control" name="gender">
-                  <option value="0">性別を選択</option>
-                  <?php if($friends['gender']==1){?>
-                  <option value="1" selected>男性</option>
-                  <option value="2">女性</option>
-                  <?php }else if($firends['gender']==2){?>
-                  <option value="1">男性</option>
-                  <option value="2" selected>女性</option>
-                  <?php }?>
-                </select>
+                    <option value="0">性別を選択</option>
+                   <option value="1" selected>男性</option>
+                   <option value="2">女性</option>
+                   <?php if ($friends['gender'] == 1) { ?>
+                     <option value="1" selected>男性</option>
+                     <option value="2">女性</option>
+                   <?php } else if ($friends['gender'] == 2) {?>
+                     <option value="1">男性</option>
+                     <option value="2" selected>女性</option>
+                   <?php } ?>
+                  </select>
               </div>
             </div>
             <!-- 年齢 -->

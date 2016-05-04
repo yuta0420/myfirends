@@ -13,6 +13,17 @@
   //接続したDBオブジェクトで文字コードutf8を使うように指定
   $dbh->query('SET NAMES utf8');
 
+  //削除処理
+  if(isset($_GET['action'])&& !empty($_GET['action'])){
+    if($_GET['action']=='delete'){
+        $sql='DELETE FROM `friends` WHERE `friend_id`='.$_GET['friend_id'];
+      
+      $stmt = $dbh->prepare($sql);
+      $stmt->execute();
+
+      header('Location:index.php');
+    }
+  }
 
   //都道府県を取得する
   $area_id = $_GET['area_id'];
@@ -85,6 +96,18 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script>
+    function destroy(friend_id){
+      if(confirm('削除しますか？')==true){
+        //OKボタンを押したとき
+        location.href='show.php?action=delete&friend_id='+ friend_id;
+        return true;
+      }else{
+        //キャンセルボタンを押したとき
+        return false;
+      }
+    }
+    </script>  
   </head>
   <body>
   <nav class="navbar navbar-default navbar-fixed-top">
@@ -129,7 +152,7 @@
               <td>
                 <div class="text-center">
                   <a href="edit.php?friend_id=<?php echo $friend_each['friend_id'];?>"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="javascript:void(0);" onclick="destroy();"><i class="fa fa-trash"></i></a>
+                  <a href="javascript:void(0);" onclick="destroy(<?php echo $friend_each['friend_id'];?>);"><i class="fa fa-trash"></i></a>
                 </div>
               </td>
             </tr>
